@@ -18,7 +18,7 @@ class ParentClass:
 
         return self.print_one_line_atts( leading_string = '', print_off = False )
 
-    def print_atts( self, how: str = 'imp', **kwargs ) -> None:
+    def print_atts( self, how: str = 'imp', **kwargs ):
 
         """Print attributes of the class off, if not printed off, the string will be returned"""
 
