@@ -186,3 +186,15 @@ class ParentClass:
 
         method_pointer = getattr( self, method_name )
         return method_pointer( *method_args, **method_kwargs )
+
+    def format_string_by_atts( self, string, **kwargs ) -> str:
+
+        triggers_plus_atts = ps.find_string_formatting( string, **kwargs )
+        atts = [ ps.strip_trigger( trigger_plus_att, **kwargs ) for trigger_plus_att in triggers_plus_atts ]
+
+        formatting_dict = {}
+        for att in atts:
+            formatting_dict[ att ] = self.get_attr( att )
+
+        formatted_string = ps.smart_format( string, formatting_dict, **kwargs )
+        return formatted_string
