@@ -1,1 +1,1 @@
-from .ParentClass import ParentClass
+from .parent_class import ParentClass

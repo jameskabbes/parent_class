@@ -198,3 +198,10 @@ class ParentClass:
 
         formatted_string = ps.smart_format( string, formatting_dict, **kwargs )
         return formatted_string
+
+
+
+def run( *sys_args ):
+
+    a = ParentClass()
+    a.print_atts()
