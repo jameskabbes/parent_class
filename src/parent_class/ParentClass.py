@@ -12,7 +12,7 @@ class ParentClass:
 
         self.type = class_type
 
-    def __str__( self ):
+    def __str__( self ) -> str:
 
         """when print(self) is executed, the returned string will be printed off"""
 
@@ -201,7 +201,6 @@ class ParentClass:
 
 
 
-def run( *sys_args ):
-
+if __name__ == '__main__':
     a = ParentClass()
     a.print_atts()

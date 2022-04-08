@@ -1,8 +1,8 @@
-### FYI, this will give an import error if executed while in the current working directory
-
 import sys
 sys_args = sys.argv[1:]
 
-from parent_class.parent_class import run
+def run( *sys_args ):
+    print ('Running main for parent_class')
+
 run( *sys_args )
 
