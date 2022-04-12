@@ -1,5 +1,3 @@
-import py_starter.py_starter as ps
-from typing import List, Any
 from parent_class import ParentPlural
 
 class ParentPluralList( ParentPlural ):

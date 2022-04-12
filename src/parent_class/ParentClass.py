@@ -1,4 +1,4 @@
-import py_starter.py_starter as ps
+import py_starter as ps
 from typing import List, Any
 
 class ParentClass:
