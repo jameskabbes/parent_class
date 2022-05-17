@@ -5,7 +5,7 @@ class ParentPluralList( ParentPlural ):
     def __init__( self, att = 'list' ):
 
         ParentPlural.__init__( self, att = att )
-        self.set_attr( self.att, {} )
+        self.set_attr( self.att, [] )
 
     def __len__( self ):
 
