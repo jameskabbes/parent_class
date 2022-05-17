@@ -1,0 +1,30 @@
+src.parent\_class.ParentPlural
+==============================
+
+.. automodule:: src.parent_class.ParentPlural
+
+   
+   
+   .. rubric:: Module attributes
+
+   .. autosummary::
+      :toctree:
+   
+      DEFAULT_KWARGS
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
