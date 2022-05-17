@@ -19,6 +19,13 @@ class ParentPlural( ParentClass ):
 
         self.att = att
 
+    def __contains__( self, Obj_to_check ) -> bool:
+
+        for Obj in self:
+            if Obj == Obj_to_check:
+                return True
+        return False
+
     def __iter__( self ):
 
         self.i = -1
