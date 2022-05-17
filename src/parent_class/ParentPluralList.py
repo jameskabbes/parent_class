@@ -1,4 +1,5 @@
 from parent_class import ParentPlural
+from typing import List
 
 class ParentPluralList( ParentPlural ):
 
@@ -26,20 +27,37 @@ class ParentPluralList( ParentPlural ):
         list.append( value )
         self.set_list( list )
 
-    def _remove( self, value, all_occurences = False ) -> bool:
+    def _remove( self, Inst, all_occurences = False ) -> bool:
+
+        """remove the Inst from the class List"""
 
         removed = False        
+
+        inds = []        
         Insts = list(self)
-        for i in range( len(self), -1, -1 ):
-            
-            if Insts[i] == value:
-                del Insts[i]
+        for i in range(len(self)):
+                      
+            if Insts[i] == Inst:
+                inds.append(i)
                 removed = True
 
                 if not all_occurences:
                     break
         
+        self._remove_inds( inds )
         return removed
+
+    def _remove_inds( self, inds: List[int] ):
+        
+        """Given a list of indices, remove the Objects at those indicies from the class List"""
+
+        list = self.get_list()
+
+        inds.sort( reverse=True )
+        for ind in inds:
+            del list[ind]
+
+        self.set_list( list )
 
     def set_list( self, list ):
 
