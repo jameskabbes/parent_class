@@ -1,0 +1,23 @@
+src.parent\_class.ParentPluralDict
+==================================
+
+.. automodule:: src.parent_class.ParentPluralDict
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

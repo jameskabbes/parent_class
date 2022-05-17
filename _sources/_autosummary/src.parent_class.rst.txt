@@ -1,0 +1,33 @@
+src.parent\_class
+=================
+
+.. automodule:: src.parent_class
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   src.parent_class.ParentClass
+   src.parent_class.ParentPlural
+   src.parent_class.ParentPluralDict
+   src.parent_class.ParentPluralList
+

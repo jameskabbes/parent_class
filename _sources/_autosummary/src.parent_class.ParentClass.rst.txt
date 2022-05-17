@@ -1,0 +1,23 @@
+src.parent\_class.ParentClass
+=============================
+
+.. automodule:: src.parent_class.ParentClass
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

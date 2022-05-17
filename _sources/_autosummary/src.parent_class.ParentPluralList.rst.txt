@@ -1,0 +1,23 @@
+src.parent\_class.ParentPluralList
+==================================
+
+.. automodule:: src.parent_class.ParentPluralList
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
