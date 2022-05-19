@@ -41,7 +41,7 @@ class ParentPlural( ParentClass ):
 
         Insts = list(self)
         inds = []
-        if len(Insts) == 0:
+        if len(Insts) != 0:
             inds = list(range( min( len(Insts)-1, max_print_atts-1) ))
             inds.append( len(Insts) -1 )
 
