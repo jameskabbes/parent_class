@@ -19,6 +19,13 @@ class ParentPlural( ParentClass ):
 
         self.att = att
 
+    def __contains__( self, Obj_to_check ) -> bool:
+
+        for Obj in self:
+            if Obj == Obj_to_check:
+                return True
+        return False
+
     def __iter__( self ):
 
         self.i = -1
@@ -34,7 +41,7 @@ class ParentPlural( ParentClass ):
 
         Insts = list(self)
         inds = []
-        if len(Insts) == 0:
+        if len(Insts) != 0:
             inds = list(range( min( len(Insts)-1, max_print_atts-1) ))
             inds.append( len(Insts) -1 )
 
