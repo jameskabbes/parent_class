@@ -3,6 +3,9 @@ from typing import List, Any
 
 class ParentClass:
 
+    _IMP_ATTS = ['type']
+    _ONE_LINE_ATTS = ['type']
+
     def __init__( self, class_type = '' ):
 
         if class_type == '':
@@ -42,7 +45,7 @@ class ParentClass:
         """Prints off (or returns a string) with the 'important' information about a class
         Most child classes will redefine this method with custom attributes to print off"""
 
-        return self._print_imp_atts_helper( atts = ['type'], print_off = print_off )
+        return self._print_imp_atts_helper( atts = self._IMP_ATTS, print_off = print_off )
 
     def _print_imp_atts_helper( self, **override_kwargs ):
 
@@ -61,7 +64,7 @@ class ParentClass:
         """Prints off (or returns a string) with information about a class in one line
         Most child classes will redefine this method with custom attributes to print off"""
 
-        return self._print_one_line_atts_helper( atts = ['type'], print_off = print_off, leading_string = leading_string )
+        return self._print_one_line_atts_helper( atts = self._ONE_LINE_ATTS, print_off = print_off, leading_string = leading_string )
 
     def _print_one_line_atts_helper( self, **override_kwargs ):
 
