@@ -17,7 +17,7 @@ class ParentClass:
 
     def __str__( self ) -> str:
 
-        """when print(self) is executed, the returned string will be printed off"""
+        """when str(self) is executed, the returned string will be printed off"""
 
         return self.print_one_line_atts( leading_string = '', print_off = False )
 
@@ -34,18 +34,27 @@ class ParentClass:
         elif how == 'all' or how == 3 : #print all atts
             return self.print_all_atts( **kwargs )
 
-    def print_all_atts( self, print_off: bool = True ):
+    def print_all_atts( self, **override_kwargs ):
 
         """Print off all Class instance attributes"""
 
-        return self._print_imp_atts_helper( atts = list(vars(self)), print_off = print_off )
+        default_kwargs = {
+        'atts': list(vars(self))
+        }
+        kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
+        return self._print_imp_atts_helper( **kwargs )
 
-    def print_imp_atts( self, print_off: bool = True ):
+    def print_imp_atts( self, **override_kwargs ):
 
         """Prints off (or returns a string) with the 'important' information about a class
         Most child classes will redefine this method with custom attributes to print off"""
 
-        return self._print_imp_atts_helper( atts = self._IMP_ATTS, print_off = print_off )
+        default_kwargs = {
+        'atts': self._IMP_ATTS
+        }
+        kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
+
+        return self._print_imp_atts_helper( **kwargs )
 
     def _print_imp_atts_helper( self, **override_kwargs ):
 
@@ -59,20 +68,25 @@ class ParentClass:
         kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
         return self._print_atts_helper( **kwargs )
 
-    def print_one_line_atts( self, print_off: bool = True, leading_string: str = '\t' ):
+    def print_one_line_atts( self, **override_kwargs ):
 
         """Prints off (or returns a string) with information about a class in one line
         Most child classes will redefine this method with custom attributes to print off"""
 
-        return self._print_one_line_atts_helper( atts = self._ONE_LINE_ATTS, print_off = print_off, leading_string = leading_string )
+        default_kwargs = {
+            'atts': self._ONE_LINE_ATTS,
+        }
+
+        kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
+        return self._print_one_line_atts_helper( **kwargs )
 
     def _print_one_line_atts_helper( self, **override_kwargs ):
 
         default_kwargs = {
         'atts': ['type'],
         'show_class_type': False,
-        'leading_string': '\t',
-        'att_sep': ',\t',
+        'leading_string': ' ',
+        'att_sep': ', ',
         }
 
         kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
@@ -98,35 +112,48 @@ class ParentClass:
         else:
             return string
 
-    def _print_atts_helper( self, atts: List[str] = [], display_names: List[str] = [], atts_and_display_names: dict = {}, override_string: str = '', leading_string: str = '', att_sep: str = '\n', show_class_type: bool = False, print_off: bool = True):
+    def _print_atts_helper( self, **override_kwargs ):
 
         """Main helper function for printing off information about the class"""
 
+        default_kwargs = {
+        'atts': [],
+        'display_names': [],
+        'atts_and_display_names': {},
+        'override_string': '',
+        'leading_string': '',
+        'att_sep': '\n',
+        'show_class_type': False,
+        'print_off': True
+        }
+
+        kwargs = ps.merge_dicts( default_kwargs, override_kwargs )
+
         atts_str = ''
-        if show_class_type:
+        if kwargs['show_class_type']:
             atts_str += self.print_class_type( print_off = False ) + '\n'
 
-        atts_str += leading_string
+        atts_str += kwargs['leading_string']
 
-        if override_string != '':
-            atts_str += override_string
+        if kwargs['override_string'] != '':
+            atts_str += kwargs['override_string']
 
         else:
             # use the dictionary as priority if given
-            if atts_and_display_names != {}:
-                atts = []
+            if kwargs['atts_and_display_names'] != {}:
+                kwargs['atts'] = []
                 display_names = []
 
-                for att in atts_and_display_names:
-                    atts.append(att)
-                    display_names.append( atts_and_display_names[att] )
+                for att in kwargs['atts_and_display_names']:
+                    kwargs['atts'].append(att)
+                    display_names.append( kwargs['atts_and_display_names'][att] )
 
             #loop through each attribute and show the attribute and the
-            for i in range(len(atts)):
-                att = atts[i]
+            for i in range(len(kwargs['atts'])):
+                att = kwargs['atts'][i]
 
-                if len(display_names) > i:
-                    display_name = display_names[i]
+                if len(kwargs['display_names']) > i:
+                    display_name = kwargs['display_names'][i]
                 else:
                     display_name = att
 
@@ -134,16 +161,16 @@ class ParentClass:
 
                 if hasattr( value, 'print_one_line_atts' ):
                     try:
-                        atts_str += ( str(display_name) + ':\t' + value.print_one_line_atts(print_off = False, leading_string = '') )
+                        atts_str += ( str(display_name) + ': ' + value.print_one_line_atts(print_off = False, leading_string = '') )
                     except:
-                        atts_str += ( str(display_name) + ':\t' + str(value) )
+                        atts_str += ( str(display_name) + ': ' + str(value) )
                 else:
-                    atts_str += ( str(display_name) + ':\t' + str(value) )
+                    atts_str += ( str(display_name) + ': ' + str(value) )
 
-                if (i+1) < len(atts):
-                    atts_str += att_sep
+                if (i+1) < len(kwargs['atts']):
+                    atts_str += kwargs['att_sep']
 
-        return self.print_string( atts_str, print_off = print_off )
+        return self.print_string( atts_str, print_off = kwargs['print_off'] )
 
     def has_attr( self, att: str ) -> bool:
 
