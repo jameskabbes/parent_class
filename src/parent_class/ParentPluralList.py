@@ -8,6 +8,11 @@ class ParentPluralList( ParentPlural ):
         ParentPlural.__init__( self, att = att )
         self.set_attr( self.att, [] )
 
+    def __iter__( self ):
+
+        self.i = -1
+        return self
+        
     def __len__( self ):
 
         return len(self.get_list())

@@ -1,8 +1,8 @@
-[GitHub Pages](https://jameskabbes.github.io/parent_class) <br>
-[PyPI](https://pypi.org/project/kabbes-parent-class)
-
 # parent_class
 Parent Class for generic Python use. Contains many helpful standard methods to speed up development for future classes. Designed to be inherited by Child classes.
+
+[Documentation](https://jameskabbes.github.io/parent_class) <br>
+[PyPI](https://pypi.org/project/kabbes-parent-class)
 
 <br>
 

@@ -49,12 +49,21 @@ class ParentPlural( ParentClass ):
             Inst = Insts[i]
             string += ( str(i+1) + '. ' + Inst.print_one_line_atts( print_off = False ) ) + '\n'
 
-        string = string[:-1]
+        if len(self._IMP_ATTS) > 0:
+            string += self._print_imp_atts_helper( atts = self._IMP_ATTS, show_class_type = False, print_off = False )
+        else:
+            string = string[:-1]
+
         return self.print_string( string, print_off = print_off )
 
     def print_one_line_atts( self, print_off = True, leading_string = '\t' ):
-
+        
         string = leading_string + 'len_' + self.att + ': ' + str(len(self))
+
+        if len(self._ONE_LINE_ATTS) > 0:
+            string += ','
+            string += self._print_one_line_atts_helper( atts = self._ONE_LINE_ATTS, print_off=False )
+
         return self.print_string( string, print_off = print_off )
 
     def get_random( self ):
