@@ -1,0 +1,45 @@
+parent\_class package
+=====================
+
+Submodules
+----------
+
+parent\_class.ParentClass module
+--------------------------------
+
+.. automodule:: parent_class.ParentClass
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+parent\_class.ParentPlural module
+---------------------------------
+
+.. automodule:: parent_class.ParentPlural
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+parent\_class.ParentPluralDict module
+-------------------------------------
+
+.. automodule:: parent_class.ParentPluralDict
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+parent\_class.ParentPluralList module
+-------------------------------------
+
+.. automodule:: parent_class.ParentPluralList
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: parent_class
+   :members:
+   :undoc-members:
+   :show-inheritance:

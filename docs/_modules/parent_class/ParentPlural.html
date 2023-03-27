@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>parent_class.ParentPlural &mdash; kabbes_parent_class 0.7.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_parent_class
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_parent_class</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">parent_class.ParentPlural</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for parent_class.ParentPlural</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">parent_class</span> <span class="kn">import</span> <span class="n">ParentClass</span>
+<span class="kn">import</span> <span class="nn">py_starter</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<div class="viewcode-block" id="ParentPlural"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural">[docs]</a><span class="k">class</span> <span class="nc">ParentPlural</span><span class="p">(</span> <span class="n">ParentClass</span> <span class="p">):</span>
+
+    <span class="n">DEFAULT_KWARGS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;MAX_PRINT_ATTS&#39;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">att</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+
+        <span class="n">ParentClass</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="n">joined_kwargs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">merge_dicts</span><span class="p">(</span> <span class="n">ParentPlural</span><span class="o">.</span><span class="n">DEFAULT_KWARGS</span><span class="p">,</span> <span class="n">kwargs</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_atts</span><span class="p">(</span> <span class="n">ParentPlural</span><span class="o">.</span><span class="n">DEFAULT_KWARGS</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">att</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">att</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att</span> <span class="o">=</span> <span class="n">att</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Obj_to_check</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+        <span class="k">for</span> <span class="n">Obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Obj</span> <span class="o">==</span> <span class="n">Obj_to_check</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="ParentPlural.print_imp_atts"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural.print_imp_atts">[docs]</a>    <span class="k">def</span> <span class="nf">print_imp_atts</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">print_off</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">max_print_atts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">):</span>
+        
+        <span class="k">if</span> <span class="n">max_print_atts</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">max_print_atts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_PRINT_ATTS</span>
+
+        <span class="n">string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_class_type</span><span class="p">(</span> <span class="n">print_off</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">string</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">Insts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">inds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Insts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">inds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span> <span class="nb">min</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">Insts</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_print_atts</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">))</span>
+            <span class="n">inds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">Insts</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">inds</span><span class="p">:</span>
+            <span class="n">Inst</span> <span class="o">=</span> <span class="n">Insts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="p">(</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;. &#39;</span> <span class="o">+</span> <span class="n">Inst</span><span class="o">.</span><span class="n">print_one_line_atts</span><span class="p">(</span> <span class="n">print_off</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_IMP_ATTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_imp_atts_helper</span><span class="p">(</span> <span class="n">atts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_IMP_ATTS</span><span class="p">,</span> <span class="n">show_class_type</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">print_off</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_string</span><span class="p">(</span> <span class="n">string</span><span class="p">,</span> <span class="n">print_off</span> <span class="o">=</span> <span class="n">print_off</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParentPlural.print_one_line_atts"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural.print_one_line_atts">[docs]</a>    <span class="k">def</span> <span class="nf">print_one_line_atts</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">print_off</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">leading_string</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="p">):</span>
+        
+        <span class="n">string</span> <span class="o">=</span> <span class="n">leading_string</span> <span class="o">+</span> <span class="s1">&#39;len_&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">att</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ONE_LINE_ATTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="s1">&#39;,&#39;</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_one_line_atts_helper</span><span class="p">(</span> <span class="n">atts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ONE_LINE_ATTS</span><span class="p">,</span> <span class="n">print_off</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_string</span><span class="p">(</span> <span class="n">string</span><span class="p">,</span> <span class="n">print_off</span> <span class="o">=</span> <span class="n">print_off</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParentPlural.get_random"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural.get_random">[docs]</a>    <span class="k">def</span> <span class="nf">get_random</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="n">Insts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Insts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Insts</span><span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Insts</span><span class="p">))</span> <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ParentPlural.user_select"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural.user_select">[docs]</a>    <span class="k">def</span> <span class="nf">user_select</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_selection_from_list</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParentPlural.user_select_multiple"><a class="viewcode-back" href="../../parent_class.html#parent_class.ParentPlural.ParentPlural.user_select_multiple">[docs]</a>    <span class="k">def</span> <span class="nf">user_select_multiple</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_user_selection_for_list_items</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ParentPlural</span><span class="p">()</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">print_atts</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
